@@ -93,7 +93,7 @@ unsafe fn get_view_class(root_view_class: &'static Class) -> &'static Class {
 
     classes.entry(root_view_class).or_insert_with(move || {
         let uiview_class = class!(UIView);
-        let is_uiview: BOOL = msg_send![root_view_class, isSubclassOfClass: uiview_class];
+        let is_uiview: BOOL = msg_send![root_view_class, isSubclass: uiview_class];
         assert_eq!(
             is_uiview, YES,
             "`root_view_class` must inherit from `UIView`"
